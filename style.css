@@ -6,25 +6,146 @@ html, body {
     margin: 0px;
     height: 100vh;
     background-color: #eee;
+    min-width: 600px;
 }
 
 header {
-    padding: 10px;
+    padding: 15px;
     padding-left: 40px;
     background-color: #222;
     color: #eee;
-    font-size: 2em;
+    font-size: 28px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+#title {
+    display: flex;
+    align-items: center;
+}
+
+#contolpanel {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+}
+
+#limitcontainer {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    padding-left: 30px;
+}
+
+#execute_limiter_inp {
+    margin: 10px;
+}
+
+.button {
+    text-align: center;
+    margin: 5px;
+    padding: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+#execute_inp {
+    background-color: rgba(255, 0, 0, 0.3);
+    min-width: 100px;
+}
+
+#execute_inp:hover {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+#step_inp {
+    background-color: rgba(255, 255, 0, 0.3);
+}
+
+#step_inp:hover {
+    background-color: rgba(255, 255, 0, 0.5);
 }
 
 #content {
     padding: 20px 10px 10px 40px;
 }
 
-#inputmatrix {
-    display: inline-block;
-}
-
 table, th, td {
     border: 1px black solid;
     border-collapse: collapse;
+}
+
+th {
+    background-color: #ccc;
+}
+
+#input {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+#inputmatrix {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    display: inline-block;
+}
+
+#inputmatrix td {
+    padding: 0px;
+}
+
+.inputmatrix_inp {
+    border: 0px white solid;
+    margin: 0px;
+    width: 50px;
+    height: 20px;
+}
+
+.tape {
+    flex-grow: 1;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.tapecell {
+    border: 2px solid grey;
+    border-radius: 3px;
+    box-shadow: 0px 0px 11px 3px rgba(0,0,0,0.1);
+    height: 50px;
+    width: 50px;
+    min-width: 50px;
+    margin: 0px 3px 0px 3px;
+    background: radial-gradient(white, rgba(0, 0, 0, 0.01));
+
+    font-size: 35px;
+    text-align: center;
+    color: #333;
+}
+
+#inputtape {
+    box-shadow: inset 0px 0px 100px 3px rgba(0, 0, 0, 0.2);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+#executiontape {
+    box-shadow: inset 0px 0px 100px 3px rgba(255, 0, 0, 0.2);
+    padding: 35px 15px 35px 15px;
+    border-radius: 15px;
+}
+
+#exceutionlog {
+    padding: 5px;
+}
+
+.logentry {
+
 }
