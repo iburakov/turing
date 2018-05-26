@@ -4,89 +4,78 @@
     <meta charset="utf-8">
     <title>Машина Тьюринга</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="lib/jquery-3.3.1.min.js"></script>
     <script src="script.js"> </script>
   </head>
   <body> 
     <header>
       <div id="title"> Машина Тьюринга </div>
       <div id="contolpanel">
-        <div id="execute_inp" class="button">Пуск</div>
-        <div id="step_inp" class="button">Шаг</div>
+        <div id="reset-inp" class="button">Стоп</div>
+        <div id="run-inp" class="button">Пуск</div>
+        <div id="step-inp" class="button">Шаг</div>
         <div id="limitcontainer"> 
-          Лимит:
-          <input id="execute_limiter_inp" type="number" value="1000" min="0" max="1000000";"> 
+          <label for="execute_limiter_inp"> Лимит: </label>
+          <input id="execute_limiter_inp" type="number" value="1000" min="0" max="1000000">
         </div>
       </div>
     </header>
     <div id="content">
       <h2> Входные данные </h2>
       <p>
-        <input type="file" id="file_inp" style="display: none" multiple="false">
+        <input type="file" id="file_inp" style="display: none" accept=".tp">
         <input type="button" value="Загрузить из файла" onclick="$('#file_inp').click()">
+        <input type="button" value="Сохранить в файл" id="save-button">
       </p>
+
       <div id="input">
         <table id="inputmatrix">
-          <tr>
-            <th></th>
-            <th>S</th>
-            <th>0</th>
-            <th>1</th>
-            <th>2</th>
-          </tr>
-          <tr>
-            <th>q1</th>
-            <td><input type=text maxlength="4" class=inputmatrix_inp></td>
-            <td><input type=text maxlength="4" class=inputmatrix_inp></td>
-            <td><input type=text maxlength="4" class=inputmatrix_inp></td>
-            <td><input type=text maxlength="4" class=inputmatrix_inp></td>
-          </tr>
-          <tr>
-            <th>q2</th>
-            <td><input type=text maxlength="4" class=inputmatrix_inp></td>
-            <td><input type=text maxlength="4" class=inputmatrix_inp></td>
-            <td><input type=text maxlength="4" class=inputmatrix_inp></td>
-            <td><input type=text maxlength="4" class=inputmatrix_inp></td>
-          </tr>
-          <tr>
-            <th>q3</th>
-            <td><input type=text maxlength="4" class=inputmatrix_inp></td>
-            <td><input type=text maxlength="4" class=inputmatrix_inp></td>
-            <td><input type=text maxlength="4" class=inputmatrix_inp></td>
-            <td><input type=text maxlength="4" class=inputmatrix_inp></td>
-          </tr>
-          <tr>
-            <th>q4</th>
-            <td><input type=text maxlength="4" class=inputmatrix_inp></td>
-            <td><input type=text maxlength="4" class=inputmatrix_inp></td>
-            <td><input type=text maxlength="4" class=inputmatrix_inp></td>
-            <td><input type=text maxlength="4" class=inputmatrix_inp></td>
-          </tr>
+          <tbody>
+            <tr>
+              <th></th>
+              <th>S</th>
+              <th>0</th>
+              <th>1</th>
+              <th>2</th>
+            </tr>
+            <tr>
+              <th>q1</th>
+              <td><input type="text" maxlength="4" class="inputmatrix_inp"></td>
+              <td><input type="text" maxlength="4" class="inputmatrix_inp"></td>
+              <td><input type="text" maxlength="4" class="inputmatrix_inp"></td>
+              <td><input type="text" maxlength="4" class="inputmatrix_inp"></td>
+            </tr>
+            <tr>
+              <th>q2</th>
+              <td><input type="text" maxlength="4" class="inputmatrix_inp"></td>
+              <td><input type="text" maxlength="4" class="inputmatrix_inp"></td>
+              <td><input type="text" maxlength="4" class="inputmatrix_inp"></td>
+              <td><input type="text" maxlength="4" class="inputmatrix_inp"></td>
+            </tr>
+            <tr>
+              <th>q3</th>
+              <td><input type="text" maxlength="4" class="inputmatrix_inp"></td>
+              <td><input type="text" maxlength="4" class="inputmatrix_inp"></td>
+              <td><input type="text" maxlength="4" class="inputmatrix_inp"></td>
+              <td><input type="text" maxlength="4" class="inputmatrix_inp"></td>
+            </tr>
+            <tr>
+              <th>q4</th>
+              <td><input type="text" maxlength="4" class="inputmatrix_inp"></td>
+              <td><input type="text" maxlength="4" class="inputmatrix_inp"></td>
+              <td><input type="text" maxlength="4" class="inputmatrix_inp"></td>
+              <td><input type="text" maxlength="4" class="inputmatrix_inp"></td>
+            </tr>
+          </tbody>
         </table>
-        <div id="inputtape" class="tape">
-          <input type="text" maxlength="1" class="tapecell">
-          <input type="text" maxlength="1" class="tapecell">
-          <input type="text" maxlength="1" class="tapecell">
-          <input type="text" maxlength="1" class="tapecell">
-          <input type="text" maxlength="1" class="tapecell">
+        <input id="inputtape" class="tape" type="text">
         </div>
       </div>
       <div id="execution">
         <h2> Исполнение </h2>
-        <div id="executiontape" class="tape">
-          <div class="tapecell"></div>
-          <div class="tapecell"></div>
-          <div class="tapecell"></div>
-          <div class="tapecell"></div>
-          <div class="tapecell"></div>
-        </div>
-        <div id="executionlog">
-          <div class="logentry"></div>
-          <div class="logentry"></div>
-          <div class="logentry"></div>
-          <div class="logentry"></div>
-          <div class="logentry"></div>
-          <div class="logentry"></div>
+        <div id="log-container">
+          <ol id="log" start="0">
+          </ol>
         </div>
       </div>
     </div>

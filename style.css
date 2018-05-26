@@ -6,12 +6,11 @@ html, body {
     margin: 0px;
     height: 100vh;
     background-color: #eee;
-    min-width: 600px;
+    min-width: 900px;
 }
 
 header {
-    padding: 15px;
-    padding-left: 40px;
+    padding: 15px 15px 15px 40px;
     background-color: #222;
     color: #eee;
     font-size: 28px;
@@ -35,8 +34,7 @@ header {
     font-size: 14px;
     display: flex;
     align-items: center;
-    padding: 5px;
-    padding-left: 30px;
+    padding: 5px 5px 5px 30px;
 }
 
 #execute_limiter_inp {
@@ -52,21 +50,29 @@ header {
     border-radius: 2px;
 }
 
-#execute_inp {
+#run-inp {
     background-color: rgba(255, 0, 0, 0.3);
     min-width: 100px;
 }
 
-#execute_inp:hover {
+#run-inp:hover {
     background-color: rgba(255, 0, 0, 0.5);
 }
 
-#step_inp {
+#step-inp {
     background-color: rgba(255, 255, 0, 0.3);
 }
 
-#step_inp:hover {
+#step-inp:hover {
     background-color: rgba(255, 255, 0, 0.5);
+}
+
+.button {
+    background-color: rgba(0, 0, 255, 0.3);
+}
+
+.button:hover {
+    background-color: rgba(0, 0, 255, 0.5);
 }
 
 #content {
@@ -80,6 +86,11 @@ table, th, td {
 
 th {
     background-color: #ccc;
+}
+
+.invalid {
+    border: 2px solid red !important;
+
 }
 
 #input {
@@ -107,45 +118,57 @@ th {
 }
 
 .tape {
-    flex-grow: 1;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    overflow-y: auto;
-}
-
-.tapecell {
-    border: 2px solid grey;
-    border-radius: 3px;
-    box-shadow: 0px 0px 11px 3px rgba(0,0,0,0.1);
-    height: 50px;
-    width: 50px;
-    min-width: 50px;
-    margin: 0px 3px 0px 3px;
-    background: radial-gradient(white, rgba(0, 0, 0, 0.01));
-
-    font-size: 35px;
-    text-align: center;
+    box-shadow: inset 0px 0px 100px 3px rgba(0, 0, 0, 0.2);
     color: #333;
+    font-size: 40px;
+    padding: 20px;
+    border: 1px #aaa solid;
+    border-radius: 3px;
+
 }
 
 #inputtape {
-    box-shadow: inset 0px 0px 100px 3px rgba(0, 0, 0, 0.2);
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+    flex-grow: 1;
+    margin: 15px 50px 15px 50px;
 }
 
-#executiontape {
-    box-shadow: inset 0px 0px 100px 3px rgba(255, 0, 0, 0.2);
-    padding: 35px 15px 35px 15px;
-    border-radius: 15px;
+#execution {
+    padding: 20px 40px 10px 40px;
 }
 
-#exceutionlog {
-    padding: 5px;
+#log-container {
+    padding: 5px 10px 20px 20px;
 }
 
-.logentry {
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+#log li {
+    font-family: Consolas, monospace;
+}
+
+#log .li-state {
+    background-color: #ddd;
+}
+
+#log .li-tape {
+    font-size: 17px;
+}
+
+#log .li-head {
+    font-weight: bold;
 
 }
