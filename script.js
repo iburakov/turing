@@ -1,11 +1,16 @@
-const MAX_EXECUTION_LIMIT = 1e6;
 const STEP_INTERVAL_MS = 50;
+
 const MOVES = ['C', 'R', 'L'];
 const STATES = ['q1', 'q2', 'q3', 'q4'];
 const FULL_STATES = ['q0'].concat(STATES);
 const SYMBOLS = ['S', '0', '1', '2'];
 const INITIAL_STATE = 'q1';
+
 const DEFAULT_LIMIT = 1000;
+const MAX_EXECUTION_LIMIT = 1e6;
+
+const EMPTY_RULE_SAVE_PLACEHOLDER = 'NNNN';
+
 
 let lastLimit = DEFAULT_LIMIT;
 let limitChangedByUser = false;
@@ -334,7 +339,8 @@ $(document).ready(function(){
             for (let sti = 0; sti < STATES.length; sti++) {
                 let stateData = lines[sti + 1].split(" ");
                 for (let smbi = 0; smbi < SYMBOLS.length; smbi++) {
-                    if (stateData[smbi] && stateData[smbi] !== 'N'){
+
+                    if (stateData[smbi] && stateData[smbi] !== EMPTY_RULE_SAVE_PLACEHOLDER){
                         turing.inputMatrix.getInputNode(STATES[sti], SYMBOLS[smbi]).value = stateData[smbi];
                     }
                 }
@@ -381,7 +387,8 @@ $(document).ready(function(){
         let text = $("#inputtape").val() + "\n";
         for (let state of STATES) {
             for (let symbol of SYMBOLS) {
-                text += turing.inputMatrix.getInputNode(state, symbol).value + " "
+                let currentRepresentation = $.trim(turing.inputMatrix.getInputNode(state, symbol).value);
+                text += (currentRepresentation === "" ? EMPTY_RULE_SAVE_PLACEHOLDER : currentRepresentation) + " ";
             }
             text += "\n"
         }
